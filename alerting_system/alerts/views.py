@@ -39,7 +39,9 @@ class AlertsViewSet(viewsets.ViewSet):
                                                   delay=delay,
                                                   description=description)
                     alert.save()
-                    return Response(data=self.request.data, status=status.HTTP_201_CREATED)
+                    result = {}
+                    result['alert'] = self.request.data
+                    return Response(data=result, status=status.HTTP_201_CREATED)
                 except Exception as exception:
                     return Response("There is another alert with same reference Id. Please provide a new one", status=status.HTTP_400_BAD_REQUEST)
         except Exception as exception:

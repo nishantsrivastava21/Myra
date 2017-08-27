@@ -42,7 +42,8 @@ INSTALLED_APPS = (
     'allauth',
     'allauth.account',
     'dashboard',
-    'el_pagination'
+    'el_pagination',
+    'bootstrap3'
 )
 
 MIDDLEWARE_CLASSES = (
