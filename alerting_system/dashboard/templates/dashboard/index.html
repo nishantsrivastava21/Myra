@@ -1,1 +1,35 @@
-<p>Welcome to your dashboard</p>
+{% block body_block %}
+    <div class="row wrapper border-bottom white-bg page-heading" style="margin-top: 25px;">
+    <div class="col-lg-12">
+    </div>
+    </div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>List of Alerts Added</h5>
+                </div>
+                <div class="ibox-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Reference Id</th>
+                                <th>Delay</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        {% for alert in alerts %}
+                            <tbody>
+                                <td>{{ alert.reference_id}} </a></td>
+                                <td>{{ alert.delay}}</a></td>
+                                <td>{{ alert.description}}</a></td>
+                            </tbody>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

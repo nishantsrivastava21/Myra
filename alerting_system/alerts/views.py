@@ -9,7 +9,7 @@ from alerts.serializers import AlertSerializer
 class AlertsViewSet(viewsets.ViewSet):
     authentication_classes = (authentication.TokenAuthentication, authentication.SessionAuthentication,)
     permission_classes = (permissions.IsAuthenticated,)
-    lookup_field = 'id'
+    lookup_field = 'reference_id'
 
     def list(self, request):
         try:
@@ -45,8 +45,15 @@ class AlertsViewSet(viewsets.ViewSet):
         except Exception as exception:
             return Response("INTERNAL_SERVER_ERROR", status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-    def delete(self, request):
+    def delete(self, request, reference_id=None):
         try:
-            pass
+            reference_id = request.GET.get("reference_id")
+            try:
+                alert  = Alerts.objects.get(reference_id=reference_id)
+            except:
+                return Response("Invalid Reference Id", status=status.HTTP_400_BAD_REQUEST)
+            alert.delete()
+            return Response({}, status=status.HTTP_204_NO_CONTENT)
         except Exception as exception:
+            print str(exception)
             return Response("INTERNAL_SERVER_ERROR", status=status.HTTP_500_INTERNAL_SERVER_ERROR)

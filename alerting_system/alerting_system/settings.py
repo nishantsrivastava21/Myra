@@ -41,7 +41,8 @@ INSTALLED_APPS = (
     'rest_framework',
     'allauth',
     'allauth.account',
-    'dashboard'
+    'dashboard',
+    'el_pagination'
 )
 
 MIDDLEWARE_CLASSES = (
