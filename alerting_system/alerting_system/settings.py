@@ -42,7 +42,6 @@ INSTALLED_APPS = (
     'allauth',
     'allauth.account',
     'dashboard',
-    'el_pagination',
     'bootstrap3'
 )
 
